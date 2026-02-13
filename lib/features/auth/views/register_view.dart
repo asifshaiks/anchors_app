@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:anchor/core/di/injection_container.dart';
 import 'package:anchor/features/auth/bloc/auth_bloc.dart';
@@ -19,7 +20,7 @@ class RegisterView extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(title: const Text('Register')),
         body: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: EdgeInsets.all(24.w),
           child: BlocConsumer<AuthBloc, AuthState>(
             listener: (context, state) {
               if (state.status == Status.error && state.errorMessage != null) {
@@ -37,7 +38,7 @@ class RegisterView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text('Create Account', style: AppTextStyles.heading),
-                  const SizedBox(height: 32),
+                  SizedBox(height: 32.h),
                   AuthForm(
                     isRegister: true,
                     isLoading: state.status == Status.loading,
@@ -51,7 +52,7 @@ class RegisterView extends StatelessWidget {
                       );
                     },
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16.h),
                   TextButton(
                     onPressed: () => context.go('/login'),
                     child: const Text('Already have an account? Login'),

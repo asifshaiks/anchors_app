@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:anchor/core/di/injection_container.dart';
 import 'package:anchor/features/auth/bloc/auth_bloc.dart';
@@ -19,7 +20,7 @@ class LoginView extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(title: const Text('Login')),
         body: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: EdgeInsets.all(24.w),
           child: BlocConsumer<AuthBloc, AuthState>(
             listener: (context, state) {
               // Show error snackbar
@@ -39,7 +40,7 @@ class LoginView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text('Welcome Back', style: AppTextStyles.heading),
-                  const SizedBox(height: 32),
+                  SizedBox(height: 32.h),
                   AuthForm(
                     isLoading: state.status == Status.loading,
                     onSubmit: ({name, required email, required password}) {
@@ -48,7 +49,7 @@ class LoginView extends StatelessWidget {
                       );
                     },
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16.h),
                   TextButton(
                     onPressed: () => context.go('/register'),
                     child: const Text("Don't have an account? Register"),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anchor/core/utils/validators.dart';
 import 'package:anchor/shared/widgets/app_button.dart';
 import 'package:anchor/shared/widgets/app_text_field.dart';
@@ -63,7 +64,7 @@ class _AuthFormState extends State<AuthForm> {
               controller: _nameController,
               validator: Validators.required,
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
           ],
           AppTextField(
             label: 'Email',
@@ -71,14 +72,14 @@ class _AuthFormState extends State<AuthForm> {
             validator: Validators.email,
             keyboardType: TextInputType.emailAddress,
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
           AppTextField(
             label: 'Password',
             controller: _passwordController,
             validator: Validators.password,
             obscureText: true,
           ),
-          const SizedBox(height: 24),
+          SizedBox(height: 24.h),
           AppButton(
             text: widget.isRegister ? 'Register' : 'Login',
             isLoading: widget.isLoading,
