@@ -10,7 +10,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Flutter Starter',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: ThemeMode.light,
       routerConfig: AppRouter.router,
     );
   }
