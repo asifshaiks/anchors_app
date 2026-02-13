@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:anchor/core/constants/app_colors.dart';
 
 /// Reusable button used across the app.
@@ -28,7 +29,12 @@ class AppButton extends StatelessWidget {
       width: width,
       height: 50,
       child: ElevatedButton(
-        onPressed: isLoading ? null : onPressed,
+        onPressed: isLoading
+            ? null
+            : () {
+                HapticFeedback.lightImpact();
+                onPressed?.call();
+              },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
