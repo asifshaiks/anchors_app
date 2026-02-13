@@ -8,6 +8,7 @@ import 'package:anchor/features/auth/bloc/auth_event.dart';
 import 'package:anchor/features/auth/bloc/auth_state.dart';
 import 'package:anchor/features/auth/widgets/auth_form.dart';
 import 'package:anchor/shared/enums/status.dart';
+import 'package:anchor/shared/widgets/app_snackbar.dart';
 import 'package:anchor/config/theme/text_styles.dart';
 
 class LoginView extends StatelessWidget {
@@ -25,9 +26,11 @@ class LoginView extends StatelessWidget {
             listener: (context, state) {
               // Show error snackbar
               if (state.status == Status.error && state.errorMessage != null) {
-                ScaffoldMessenger.of(
+                AppSnackbar.show(
                   context,
-                ).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
+                  message: state.errorMessage!,
+                  type: SnackbarType.error,
+                );
               }
 
               // Navigate on success

@@ -32,6 +32,7 @@ class AppTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       validator: validator,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       obscureText: obscureText,
       keyboardType: keyboardType,
       maxLines: maxLines,

@@ -8,6 +8,7 @@ import 'package:anchor/features/auth/bloc/auth_event.dart';
 import 'package:anchor/features/auth/bloc/auth_state.dart';
 import 'package:anchor/features/auth/widgets/auth_form.dart';
 import 'package:anchor/shared/enums/status.dart';
+import 'package:anchor/shared/widgets/app_snackbar.dart';
 import 'package:anchor/config/theme/text_styles.dart';
 
 class RegisterView extends StatelessWidget {
@@ -24,9 +25,11 @@ class RegisterView extends StatelessWidget {
           child: BlocConsumer<AuthBloc, AuthState>(
             listener: (context, state) {
               if (state.status == Status.error && state.errorMessage != null) {
-                ScaffoldMessenger.of(
+                AppSnackbar.show(
                   context,
-                ).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
+                  message: state.errorMessage!,
+                  type: SnackbarType.error,
+                );
               }
 
               if (state.status == Status.success) {
