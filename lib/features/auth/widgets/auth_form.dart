@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:anchor/core/utils/validators.dart';
 import 'package:anchor/shared/widgets/app_button.dart';
 import 'package:anchor/shared/widgets/app_text_field.dart';
+import 'package:anchor/shared/widgets/secure_text_field.dart';
 
 /// Reusable auth form. Used by both Login and Register views.
 ///
@@ -73,11 +74,10 @@ class _AuthFormState extends State<AuthForm> {
             keyboardType: TextInputType.emailAddress,
           ),
           SizedBox(height: 16.h),
-          AppTextField(
+          SecureTextField(
             label: 'Password',
             controller: _passwordController,
             validator: Validators.password,
-            obscureText: true,
           ),
           SizedBox(height: 24.h),
           AppButton(

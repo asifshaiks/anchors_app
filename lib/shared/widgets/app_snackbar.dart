@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// The type of snackbar to display.
@@ -17,6 +18,21 @@ class AppSnackbar {
     SnackbarType type = SnackbarType.info,
     Duration duration = const Duration(seconds: 3),
   }) {
+    // Haptic feedback for non-success snackbars
+    if (type != SnackbarType.success) {
+      switch (type) {
+        case SnackbarType.error:
+          HapticFeedback.heavyImpact();
+          break;
+        case SnackbarType.warning:
+        case SnackbarType.info:
+          HapticFeedback.lightImpact();
+          break;
+        default:
+          break;
+      }
+    }
+
     ScaffoldMessenger.of(context)
       ..hideCurrentSnackBar()
       ..showSnackBar(
